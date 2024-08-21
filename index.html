@@ -10,11 +10,27 @@
             h2 {margin-top: 20px;}
             ul {list-style-type: none; margin-left: 20px;}
             li {margin-bottom: 5px;}
+            .fixed-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .container {
+                padding-bottom: 60px; /* To ensure content is not hidden behind the button */
+            }
         </style>
     </head>
     <body>
-        <h1>Audio Files Directory</h1>
+        <h1>JESUS Film (Story of JESUS) Audio Radio Temporary Files Directory</h1>
         <form id="downloadForm" method="post" action="http://localhost:5000/download_files" target="_blank">
+            <div class="container">
     <h2>ADI, PADAM - 28963</h2>
 <ul>
 <li><input type="checkbox" name="file" value="https://10x15.blob.core.windows.net/audio-files/ADI, PADAM - 28963/10x15 disc 1 - 01.mp3?sp=r&st=2024-08-21T00:35:42Z&se=2025-08-21T08:35:42Z&sv=2022-11-02&sr=c&sig=Ml2H%2FGr2bPixWFh%2FAXspUHYKf%2FwiH9LL8CHSrdURABw%3D"> <a href="https://10x15.blob.core.windows.net/audio-files/ADI, PADAM - 28963/10x15 disc 1 - 01.mp3?sp=r&st=2024-08-21T00:35:42Z&se=2025-08-21T08:35:42Z&sv=2022-11-02&sr=c&sig=Ml2H%2FGr2bPixWFh%2FAXspUHYKf%2FwiH9LL8CHSrdURABw%3D" target="_blank">10x15 disc 1 - 01.mp3</a></li>
@@ -232,7 +248,8 @@
 <li><input type="checkbox" name="file" value="https://10x15.blob.core.windows.net/audio-files/Afghan Pashto, Eastern - 21646/JESUS Audio 85 min.mp3?sp=r&st=2024-08-21T00:35:42Z&se=2025-08-21T08:35:42Z&sv=2022-11-02&sr=c&sig=Ml2H%2FGr2bPixWFh%2FAXspUHYKf%2FwiH9LL8CHSrdURABw%3D"> <a href="https://10x15.blob.core.windows.net/audio-files/Afghan Pashto, Eastern - 21646/JESUS Audio 85 min.mp3?sp=r&st=2024-08-21T00:35:42Z&se=2025-08-21T08:35:42Z&sv=2022-11-02&sr=c&sig=Ml2H%2FGr2bPixWFh%2FAXspUHYKf%2FwiH9LL8CHSrdURABw%3D" target="_blank">JESUS Audio 85 min.mp3</a></li>
 </ul>
 
-        <button type="submit">Download Selected Files</button>
+            </div>
+            <button type="submit" class="fixed-button">Download Selected Files</button>
         </form>
     </body>
     </html>
