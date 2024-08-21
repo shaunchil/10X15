@@ -1,0 +1,65 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://twr.org/data/FileManager/thumbnails/Files/Opportunities/Maintenance%20Opportunities_1631047420_500x400.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.container {
+    padding-bottom: 60px; /* To ensure content is not hidden behind the button */
+}
+
+.container ul {
+    margin-bottom: 30px;
+}
+
