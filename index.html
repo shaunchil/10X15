@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Files Directory</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        h2 {margin-top: 20px;}
+        ul {list-style-type: none; margin-left: 20px;}
+        li {margin-bottom: 5px;}
+    </style>
+</head>
+<body>
+    <h1>Audio Files Directory</h1>
+    <form id="downloadForm" method="post" action="download_files" target="_blank">
+
+        <!-- Loop through folders and files -->
+        {% for folder, files in folder_dict.items() %}
+            {% if folder %}
+                <h2>{{ folder }}</h2>
+                <ul>
+            {% else %}
+                <ul>
+            {% endif %}
+            {% for file_name in files %}
+                <!-- Construct the file URL -->
+                {% set file_url = "https://" + connection_string.split(';')[1].split('=')[1] + ".blob.core.windows.net/" + container_name + "/" + folder + "/" + file_name + "?" + sas_token %}
+                <li><input type="checkbox" name="file" value="{{ file_url }}"> <a href="{{ file_url }}" target="_blank">{{ file_name }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+
+        <!-- Submit button -->
+        <button type="submit">Download Selected Files</button>
+    </form>
+</body>
+</html>
