@@ -5,70 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Files Directory</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            position: relative; /* Ensure the body can contain the floating button */
-        }
-        h1 {
-            margin-top: 20px;
-        }
-        h2 {
-            margin-top: 20px;
-        }
-        ul {
-            list-style-type: none;
-            margin-left: 20px;
-        }
-        li {
-            margin-bottom: 5px;
-        }
-        .floating-button-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #f8f8f8;
-            padding: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 1000; /* Ensure it stays above other content */
-        }
-        .floating-button-container button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .floating-button-container button:hover {
-            background-color: #45a049;
-        }
+        body {font-family: Arial, sans-serif;}
+        h2 {margin-top: 20px;}
+        ul {list-style-type: none; margin-left: 20px;}
+        li {margin-bottom: 5px;}
     </style>
 </head>
 <body>
     <h1>Audio Files Directory</h1>
-    <form id="downloadForm" method="post" action="{{ url_for('download_files') }}" target="_blank">
+    <form id="downloadForm" method="post" action="download_files" target="_blank">
+
+        <!-- Loop through folders and files -->
         {% for folder, files in folder_dict.items() %}
             {% if folder %}
                 <h2>{{ folder }}</h2>
+                <ul>
+            {% else %}
+                <ul>
             {% endif %}
-            <ul>
-                {% for file_name in files %}
-                    <!-- Simplified URL Construction -->
-                    {% set file_url = "https://" + blob_service_client.account_name + ".blob.core.windows.net/" + container_name + "/" + folder + "/" + file_name + "?" + sas_token %}
-                    <li>
-                        <input type="checkbox" name="file" value="{{ file_url }}"> 
-                        <a href="{{ file_url }}" target="_blank">{{ file_name }}</a>
-                    </li>
-                {% endfor %}
+            {% for file_name in files %}
+                <!-- Construct the file URL -->
+                {% set file_url = "https://" + connection_string.split(';')[1].split('=')[1] + ".blob.core.windows.net/" + container_name + "/" + folder + "/" + file_name + "?" + sas_token %}
+                <li><input type="checkbox" name="file" value="{{ file_url }}"> <a href="{{ file_url }}" target="_blank">{{ file_name }}</a></li>
+            {% endfor %}
             </ul>
         {% endfor %}
-        <!-- Floating Button Container -->
-        <div class="floating-button-container">
-            <button type="submit">Download Selected Files</button>
-        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Download Selected Files</button>
     </form>
 </body>
 </html>
