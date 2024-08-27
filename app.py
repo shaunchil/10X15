@@ -11,7 +11,7 @@ app = Flask(__name__)
 CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=10x15;AccountKey=cRZUjzLbkheGk1YZ1OoHtfSrIbJzlLRBd3OV5zTWTinC1F57Zc0CKBR2yxSjv82Qd6bMZ5nGkJUU+AStF3j/PA==;EndpointSuffix=core.windows.net"
 CONTAINER_NAME = "audio-files"
 SAS_TOKEN = "sp=r&st=2024-08-21T00:35:42Z&se=2025-08-21T08:35:42Z&sv=2022-11-02&sr=c&sig=Ml2H%2FGr2bPixWFh%2FAXspUHYKf%2FwiH9LL8CHSrdURABw%3D"
-FILES_PER_PAGE = 20  # Number of files per page for pagination
+FILES_PER_PAGE = 400  # Number of files per page for pagination
 
 @app.route('/')
 def index():
